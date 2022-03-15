@@ -1,0 +1,55 @@
+================================================================================
+CS 4063/5063: Scoring & Comments for Homework - Design A
+================================================================================
+
+Score: 18 / 20      (Doesn't include late penalty, if any. See Canvas.)
+
+==== Scoring ===================================================================
+
+Overall Submission [4 / 4]
+
+[1 / 1]  Submitted file is organized as specified, and imports into Wireframes
+         without error.
+[1 / 1]  Submission contains two wireframes called Editor and Refined.
+[1 / 1]  Submission contains no extra wireframes and at most one image asset.
+[1 / 1]  Both wireframes are clearly designed for the purpose (i.e., editing a
+         single movie's metadata)
+
+Wireframes [8 / 10]
+
+[2 / 3]  Components for all attributes are included in both layouts.
+         (Points: 3 for all 19 / 2 for 15+ / 1 for 5+)
+[1 / 1]  All required widgets are included in both layouts.
+[1 / 2]  "Your choice" widget choices are appropriate for attribute types.
+         (Points: 2 for all 11 / 1 for 6+)
+[1 / 1]  Widget value defaults in Editor wireframe match the corresponding
+         attribute types.
+[1 / 1]  Widget values in Refined wireframe are representative, allowed values.
+[2 / 2]  The Refined wireframe clearly reflects non-trivial (noticeable and
+         meaningful) modification to widgets and/or their layout.
+
+Wireframe Comments [6 / 6]
+
+[2 / 2]  The first comment clearly explains widget choices for several widgets.
+[2 / 2]  The second comment helpfully describes a reasonable layout strategy.
+[1 / 1]  The third comment clearly describes reasonable refinements.
+[1 / 1]  The third comment reflects appropriate, reasonable, non-trivial goal(s)
+         for refinement.
+
+
+==== Comments ==================================================================
+
+Pretty good design, well done made, good helpful comments and you made a good
+amount of meaningful changes.
+
+Some slight issues: title should not be a label, as the user should be able to
+edit it. Your widget choice comment was adequate but there should be more on it
+in the future. You should only have 2 comments on the first page and 1 on the
+second. Combine them into "Layout Strategy" and "Widget Choices" on the first
+page, and "Changes" on the second.
+
+In the future, you'll need to combine your comments into the number of Comment
+elements specified in the instructions. (When grading it makes it much easier
+for us to figure out which ones are which.)
+
+================================================================================

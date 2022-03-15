@@ -1,0 +1,31 @@
+﻿Fazil Raja
+                                        Evaluation of Prototype C
+
+
+Below are the times and averages of my 2 younger brothers on following the steps.
+
+
+Little Brother #1
+Time 1: 23.93
+Time 2: 24.31
+Time 3: 22.52
+Average: 23.59
+
+
+Little Brother #2
+Time 1: 21.67
+Time 2: 22.43
+Time 3: 23.17
+Average: 22.42
+
+
+Compared to the Fitts’ law calculated in Design C, which was about 9.45 seconds, it is way higher. Why is that? The reason is because of the coordinate difference in the design and prototype. The Prototype's distance between the clicks is way larger than the designs. This resulted in a longer time to finish the task. Another reason is the low DPI of my mouse. I am a slow sense gamer, which results in my mouse having a really slow movement speed.
+
+
+To improve the efficiency of the task, we can make the accordion take a lesser amount of space, instead of completely taking up the whole side of the pane. Another is to make the comments section closer to the top, so when we switch over we can immediately change the comment instead of moving the mouse all the way down the screen to click the comment section in order to change it. 
+
+
+If that happens, then everything will get pushed down with the comment section being on top of the other widgets. I implemented this design in the editor pane for a brief prototyping and timed it. The time to follow the steps from Design C improved by an average amount of 1.5 seconds. But how many times are we going to change comments? We are more likely to change the average score than the comments. For this alternative task, we choose 2 Fast 2 Furious from the table, go to the editor tab, and change the score for 2 Fast 2 Furious from 5.9 to 6.5. The average time for 3 times is 6.3 seconds. I then changed the code to put the comment section on top of the editor pane, resulting in all the other widgets to shift down.
+
+
+The average time to do the same task went from 6.3 to 7.4, a bit more of a second difference. Changing a design can have its own advantages and drawbacks, so it depends on the designer to pick and choose what they prioritize in Fitts’ Law.

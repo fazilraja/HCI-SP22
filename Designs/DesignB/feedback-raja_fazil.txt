@@ -1,0 +1,61 @@
+================================================================================
+CS 4063/5063: Scoring & Comments for Homework - Design B
+================================================================================
+
+Score: 15 / 20      (Doesn't include late penalty, if any. See Canvas.)
+
+==== Scoring ===================================================================
+
+Submission [2 / 2]
+
+[1 / 1]  Submitted file is .bmpr format, imports into Wireframes without error.
+[1 / 1]  Included assets are appropriate, sufficient, and mostly/all necessary.
+
+Sketch, Collection & Editor Wireframes [3 / 3]
+
+[1 / 1]  Submission contains wireframe called Sketch, Collection, and Editor,
+         and all three wireframes are clearly matched to the corresponding tabs.
+[1 / 1]  All three wireframes use reasonably simple elements to reproduce most
+         UI items. (Moderately complex compositions for the cover flow is okay.)
+[1 / 1]  UI items for table, cover flow, summary are reproduced recognizably
+         using a Data Grid (or suitable substitute) with representative data.
+
+Task Flow Wireframe [5 / 5]
+
+[1 / 1]  Submission contains a wireframe called Task Flow.
+[1 / 1]  Task Flow uses reasonable elements for a box-and-arrow diagram.
+[1 / 1]  Boxes are labeled as states. Possible interaction paths are obvious.
+[1 / 1]  Paths include a path with 8+ states for the specified storyboard task.
+[1 / 1]  Each box links to the corresponding duplicate wireframe, for whichever
+         duplicate wireframes were included in the submission (at least 4).
+
+Duplicate Wireframes [3 / 5]
+
+[1 / 1]  A duplicate is included for each Task Flow box (all or all but one).
+[0 / 1]  Duplicates (>=4) are appropriately renamed and reasonably modified.
+[1 / 1]  Markup is sufficient to understand each duplicate's interactions.
+[0 / 1]  Each wireframe contains link(s) to following step(s) in the task flow.
+[1 / 1]  Duplicates (>=4) have recognizable, functional Home and Back links.
+
+Discovery & Wireframe Refinement [2 / 5]
+
+[0 / 1]  Discovery approach followed requirements and produced useful data.
+[0 / 1]  Three attributes reasonably chosen based on gathered information.
+[1 / 1]  Table columns are included and reasonably designed for five attributes.
+[1 / 1]  Summary design is reasonably refined based on discovery results.
+[0 / 1]  Comment is objective and helps to understand discovery & refinement.
+
+==== Comments ==================================================================
+
+Missing the center movie label in cover flow.
+
+Summary items should be populated in Sketch wireframe and A Beautiful mind row should be
+populated in the table.
+
+I recommend choosing each row in the table to be one full color, i.e the 2 Fast 2 Furious
+row would be fully white and A Beautiful Mind would be fully gray, etc.
+
+Your disoveery process should include interviewing other people
+
+
+================================================================================
