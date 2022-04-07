@@ -1,0 +1,62 @@
+================================================================================
+CS 4063/5063: Scoring & Comments for Homework - Design C
+================================================================================
+
+Score: 14 / 20      (Doesn't include late penalty, if any. See Canvas.)
+
+==== Scoring ===================================================================
+
+Submission [1 / 1]
+
+[1 / 1]  Submitted file is .bmpr format; imports into Wireframes without error;
+         included assets are appropriate, sufficient, and mostly/all necessary.
+
+Collection, Editor & Parts Wireframes [5 / 5]
+
+[1 / 1]  Submission contains wireframes called Collection and Editor, each in a
+         window with a menubar and with pane content copied over from Design B.
+[1 / 1]  Submission contains wireframe called Parts that includes distinct parts
+         for four menus (showing their menu items) and four accordion states.
+[1 / 1]  Menubar design contains all four menus; menus contain all specified
+         items (at most one missing); most menu items have familiar shortcuts.
+[1 / 1]  Accordion states each incorporate appropriate widgets for filtering.      
+[1 / 1]  Other section of accordion is appropriately titled and allows sensible
+         editing of value(s) for filtering on the chosen attribute. 
+
+Task Flow Wireframe [3 / 5]
+
+[1 / 1]  Submission contains a wireframe called Task Flow.
+[1 / 1]  Task Flow uses reasonable elements for a box-and-arrow diagram.
+[0 / 1]  Task Flow includes all 13 states for the specified storyboard task.
+[0 / 1]  Boxes labeled as states. Four alternative interaction paths for steps
+         3-7 are obvious and correctly match four most likely filtering orders.
+[1 / 1]  Each box links to the corresponding duplicate wireframe.
+
+Duplicate Wireframes [2 / 4]
+
+[1 / 1]  A duplicate is included for each Task Flow box (all or all but one).
+[1 / 1]  Duplicates are appropriately renamed and reasonably modified.
+[0 / 1]  Markup is sufficient to understand each duplicate's interactions.
+[0 / 1]  Each wireframe contains recognizable, functional forward and backward
+         link(s) to appropriate step(s) in the task flow, plus Home links.
+
+Design Analysis [3 / 5]
+
+[1 / 1]  Hick's Law applied for File/Open menu item, with reasonable choices
+         of number of levels and n for each level; work shown, correct result.
+[1 / 1]  Hick's Law comment describes reasonable menu modification with helpful,
+         objective analysis based on menu calculations.
+[1 / 1]  Fitts' Law applied for one storyboard path (clearly identified), with
+         reasonable choices of amplitude and effective width for all steps.
+[0 / 1]  Fitts' Law calculation includes Hick's Law results and typing time;
+         work shown, correct result.
+[0 / 1]  Fitts' Law comment correctly identifies slowest step and describes
+         reasonable, non-trivial layout modification with helpful, objective
+         analysis of benefits and/or drawbacks based on movement calculations.
+
+==== Comments ==================================================================
+
+Hick's law results were not included in Fitts' calculations 
+Modification and analysis for Fitts' law needs to be based off the slowest steps.
+
+================================================================================
