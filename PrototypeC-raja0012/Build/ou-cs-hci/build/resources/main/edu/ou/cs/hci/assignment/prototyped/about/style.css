@@ -1,0 +1,53 @@
+/******************************************************************************/
+
+/* TODO #2: Edit this file to style the elements in your page. There are many */
+/* CSS properties. See https://www.w3schools.com/css/ for reference and help. */
+
+/******************************************************************************/
+
+body
+{
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+p{
+    margin: -2px 0 -2px 0;
+}
+
+.left {
+    float: left;
+    width: 100px;
+    height: 300px;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+}
+
+#appName {
+    font-size:16px;
+}
+
+#teamImage {
+    padding-top: 20px;
+}
+
+#projectSumm {
+    float: center;
+    width: 280px;
+    font-size: 13px;
+}
+
+#license {
+    padding-top: 40px;
+}
+
+#licenseSumm {
+    text-align:center;
+    float: center;
+    width: 280px;
+    font-size: 13px;
+}
+/******************************************************************************/
