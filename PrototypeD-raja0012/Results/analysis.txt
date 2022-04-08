@@ -1,0 +1,4 @@
+﻿One aspect that I improved is the law of Symmetry and Proximity. I did this by closing the gaps between the checkboxes of the genre and awards. This resulted in them being closed together and helped improve the users interface as it flows smoother and looks more of like a group. Another improvement that was made is making the director and title text fields similar. Following the law of similarity, it proved that they belong together as text boxes. This same law can be applied to the checkboxes, summary and comments, and the second row consisting of the year, average review score, review score, rating and runtime.
+
+
+One aspect that might have broken some laws is the repositioning of the colored and animated checkboxes. It was difficult to figure out what to do with them. So I decided to align them with genre checkboxes. Although this follows the law of Common Fate, it breaks the law Continuity as it is an abrupt change of the application's structure.
