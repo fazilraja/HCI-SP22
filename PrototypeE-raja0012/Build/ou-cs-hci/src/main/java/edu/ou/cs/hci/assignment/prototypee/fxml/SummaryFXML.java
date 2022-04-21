@@ -44,6 +44,7 @@ public class SummaryFXML extends BorderPane
 
 	public SummaryFXML()
 	{
+
 		FXMLLoader	fxmlLoader =
 			new FXMLLoader(getClass().getResource("Summary.fxml"));
 

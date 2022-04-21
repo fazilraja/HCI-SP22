@@ -26,14 +26,27 @@
   <!-- TODO #02: Layout a hierarchy of widgets inside the root pane. -->
   <!-- Give each widget the same fx:id as its member name in SummaryFXML. -->
   <!-- Add any necessary imports (like in Java files) above. -->
+
+
   <top>
     <Label fx:id="summaryTitle"/>
-    <ImageView fx:id="summaryImage"/>
-    <Label fx:id="summaryYear"/>
-    <Label fx:id="summaryGenre"/>
-    <Label fx:id="summaryRating"/>
-    <Label fx:id="summaryRuntime"/>
   </top>
+  <center>
+    <ImageView fx:id="summaryImage"
+    />
+  </center>
+  <bottom>
+    <VBox>
+      <children>
+        <Label fx:id="summaryYear"/>
+        <Label fx:id="summaryGenre"/>
+        <Label fx:id="summaryRating"/>
+        <Label fx:id="summaryRuntime"/>
+      </children>
+    </VBox>
+  </bottom>
+
+
 
   <!-- Declare which FXCSS files to load styles from. -->
   <stylesheets>

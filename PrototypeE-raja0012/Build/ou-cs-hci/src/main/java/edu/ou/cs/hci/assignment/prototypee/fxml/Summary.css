@@ -22,7 +22,9 @@
 
 .root
 {
-    -fx-background-color: #000000;  /* Just an example. Change/replace me! */
+    -fx-background-color: white;  /* Just an example. Change/replace me! */
+    -fx-padding: 35px, 15px, 25px, 15px;
+    -fx-wrap-text: true;
 }
 
 /******************************************************************************/
@@ -31,11 +33,16 @@
 
 .label
 {
-    -fx-font-family: roboto;        /* Just an example. Change/replace me!  */
+    -fx-font: normal bold 16 "sans-serif";        /* Just an example. Change/replace me!  */
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-content-display: center;
 }
 
 .image-view
 {
+    -fx-alignment: center;
 }
 
 /******************************************************************************/

@@ -391,8 +391,8 @@ public final class CollectionPane extends AbstractPane
 			summaryRuntime = pane.summaryRuntime;
 
 			// ...then swap the comments on the next two lines to use the FXML.
-			//return pane;					// <--- Uncomment this line
-			return buildMovieView();		// <--- Comment this line
+			return pane;					// <--- Uncomment this line
+			//return buildMovieView();		// <--- Comment this line
 		}
 		catch (Exception ex)
 		{

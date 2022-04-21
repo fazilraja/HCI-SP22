@@ -87,6 +87,13 @@ public final class CoverFlow extends AbstractPane
 	private Animation					animation;
 
 	// TODO #04a: Add members for your left and right navigation buttons here.
+	private Button						leftOne;
+	private Button						leftFive;
+	private Button						leftFirst;
+
+	private Button						rightOne;
+	private Button						rightFive;
+	private Button						rightLast;
 
 	// Handlers
 	private final ActionHandler		actionHandler;
@@ -212,6 +219,30 @@ public final class CoverFlow extends AbstractPane
 
 		// TODO #04b: Create your buttons and add them to the base pane on top.
 		// A good way is to put them all in a Group and add that to the pane.
+		leftOne = new Button("<");
+		leftOne.setLayoutY(0);
+
+		leftFive = new Button("<<");
+		leftFive.setLayoutY(50);
+
+		leftFirst = new Button("<<<");
+		leftFirst.setLayoutY(100);
+
+		rightOne = new Button(">");
+		rightOne.setLayoutX(300);
+
+		rightFive = new Button(">>");
+		rightFive.setLayoutX(300);
+		rightFive.setLayoutY(50);
+
+		rightLast = new Button(">>>");
+		rightLast.setLayoutX(300);
+		rightLast.setLayoutY(100);
+
+
+		Group group = new Group();
+		group.getChildren().addAll(leftOne, leftFive, leftFirst, rightOne, rightFive, rightLast);
+		base.getChildren().add(group);
 
 		return base;
 	}
@@ -223,11 +254,23 @@ public final class CoverFlow extends AbstractPane
 	// TODO #5a: Register each of your buttons with the action handler.
 	private void	registerWidgetHandlers()
 	{
+		leftOne.setOnAction(actionHandler);
+		leftFive.setOnAction(actionHandler);
+		leftFirst.setOnAction(actionHandler);
+		rightOne.setOnAction(actionHandler);
+		rightFive.setOnAction(actionHandler);
+		rightLast.setOnAction(actionHandler);
 	}
 
 	// TODO #5b: Unregister each of your buttons with the action handler.
 	private void	unregisterWidgetHandlers()
 	{
+		leftOne.setOnAction(null);
+		leftFive.setOnAction(null);
+		leftFirst.setOnAction(null);
+		rightOne.setOnAction(null);
+		rightFive.setOnAction(null);
+		rightLast.setOnAction(null);
 	}
 
 	//**********************************************************************
@@ -375,6 +418,8 @@ public final class CoverFlow extends AbstractPane
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
+		leftOne.setLayoutX(0);
+		leftOne.setLayoutY(0);
 	}
 
 	private void	updateAnimation(Movie movie)
@@ -425,8 +470,30 @@ public final class CoverFlow extends AbstractPane
 				(List<Movie>)controller.getProperty("movies");
 			Movie			movie = (Movie)controller.getProperty("movie");
 
+			//get index of current movie
+			int index = movies.indexOf(movie);
+
 			// TODO #07a: Update which movie is selected in the model, based on
 			// which button was clicked, following the design specification.
+			if(source == leftOne) {
+				controller.setProperty("movie", movies.get(index - 1));
+			}
+			else if(source == leftFive) {
+				controller.setProperty("movie", movies.get(index - 5));
+			}
+			else if(source == leftFirst) {
+				controller.setProperty("movie", movies.get(0));
+			}
+			else if(source == rightOne) {
+				controller.setProperty("movie", movies.get(index + 1));
+			}
+			else if(source == rightFive) {
+				controller.setProperty("movie", movies.get(index + 5));
+			}
+			else if(source == rightLast) {
+				controller.setProperty("movie", movies.get(movies.size()-1));
+			}
+			e.consume();
 		}
 	}
 
@@ -472,11 +539,24 @@ public final class CoverFlow extends AbstractPane
 	{
 		List<Movie>	movies = (List<Movie>)controller.getProperty("movies");
 		Movie			movie = (Movie)controller.getProperty("movie");
-
+		int index = movies.indexOf(movie);
 		// TODO #07b: Update which movie is selected in the model, based on
 		// which key was pressed, similar to how the buttons work.
 		// Use HOME for first, END for last, PAGE UP for +5, PAGE DOWN
 		// for -5, LEFT ARROW for -1, RIGHT ARROW for +1.
+
+		if(e.getCode() == KeyCode.HOME)
+			controller.setProperty("movie", movies.get(0));
+		else if(e.getCode() == KeyCode.END)
+			controller.setProperty("movie", movies.get(movies.size()-1));
+		else if(e.getCode() == KeyCode.PAGE_UP)
+			controller.setProperty("movie", movies.get(index + 5));
+		else if(e.getCode() == KeyCode.PAGE_DOWN)
+			controller.setProperty("movie", movies.get(index - 5));
+		else if(e.getCode() == KeyCode.LEFT)
+			controller.setProperty("movie", movies.get(index - 1));
+		else if(e.getCode() == KeyCode.RIGHT)
+			controller.setProperty("movie", movies.get(index + 1));
 
 		e.consume();	// Consume all presses so they doesn't propagate up
 	}
