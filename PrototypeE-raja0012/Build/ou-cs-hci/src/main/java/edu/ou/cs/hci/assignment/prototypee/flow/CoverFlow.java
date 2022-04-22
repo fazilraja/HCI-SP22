@@ -22,6 +22,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.event.*;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.effect.*;
@@ -29,6 +31,10 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import edu.ou.cs.hci.assignment.prototypee.*;
 import edu.ou.cs.hci.assignment.prototypee.pane.AbstractPane;
@@ -68,6 +74,9 @@ public final class CoverFlow extends AbstractPane
 						   new Stop(0.00, Color.web("#606060", 1.00)),
 						   new Stop(1.00, Color.web("#202020", 1.00)));
 
+	private static final Font FONT =
+			Font.font("Serif", FontWeight.BOLD, 16.0);
+
 	//**********************************************************************
 	// Private Members
 	//**********************************************************************
@@ -95,6 +104,9 @@ public final class CoverFlow extends AbstractPane
 	private Button						rightFive;
 	private Button						rightLast;
 
+	private Label 						reviewScoreLabel;
+	private ProgressBar					reviewScore;
+	private Label						isAnimated;
 	// Handlers
 	private final ActionHandler		actionHandler;
 
@@ -209,7 +221,7 @@ public final class CoverFlow extends AbstractPane
 		flow.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
 		// Stack the background fill and item flow
-		base = new StackPane(fill, flow);
+		base = new StackPane();
 
 		// Try to keep the keyboard focus to allow keypress navigation
 		base.setFocusTraversable(true);
@@ -219,31 +231,49 @@ public final class CoverFlow extends AbstractPane
 
 		// TODO #04b: Create your buttons and add them to the base pane on top.
 		// A good way is to put them all in a Group and add that to the pane.
+
+		//review score and is animated items
+		reviewScoreLabel = new Label("Review Score");
+		reviewScoreLabel.setFont(FONT);
+		reviewScoreLabel.setTextAlignment(TextAlignment.CENTER);
+		reviewScoreLabel.setTextFill(Color.WHITE);
+		reviewScore = new ProgressBar();
+
+		reviewScore.setStyle("-fx-accent: grey;");
+
+		isAnimated = new Label("Is Animated");
+		isAnimated.setFont(FONT);
+		isAnimated.setTextFill(Color.WHITE);
+
 		leftOne = new Button("<");
-		leftOne.setLayoutY(0);
+		leftOne.setMaxWidth(50);
 
 		leftFive = new Button("<<");
-		leftFive.setLayoutY(50);
+		leftFive.setMaxWidth(50);
 
 		leftFirst = new Button("<<<");
-		leftFirst.setLayoutY(100);
+		leftFirst.setMaxWidth(50);
 
 		rightOne = new Button(">");
-		rightOne.setLayoutX(300);
+		rightOne.setMaxWidth(50);
 
 		rightFive = new Button(">>");
-		rightFive.setLayoutX(300);
-		rightFive.setLayoutY(50);
+		rightFive.setMaxWidth(50);
 
 		rightLast = new Button(">>>");
-		rightLast.setLayoutX(300);
-		rightLast.setLayoutY(100);
+		rightLast.setMaxWidth(50);
 
+		VBox left = new VBox(leftOne, leftFive, leftFirst);
+		left.relocate(0,0);
+		left.setSpacing(10);
+
+		VBox right = new VBox(rightOne, rightFive, rightLast);
+		right.relocate(600, 0);
+		right.setSpacing(10);
 
 		Group group = new Group();
-		group.getChildren().addAll(leftOne, leftFive, leftFirst, rightOne, rightFive, rightLast);
-		base.getChildren().add(group);
-
+		group.getChildren().addAll(left, right, reviewScoreLabel, reviewScore, isAnimated);
+		base.getChildren().addAll(fill, flow, group);
 		return base;
 	}
 
@@ -411,15 +441,54 @@ public final class CoverFlow extends AbstractPane
 			item.setScaleY(s);
 
 			// Apply reflection effect to the item
-			item.setEffect(new Reflection());
+			//item.setEffect(new Reflection());
 		}
 
 		// TODO #06: Make any necessary updates to the layout and styling of
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
-		leftOne.setLayoutX(0);
-		leftOne.setLayoutY(0);
+
+		//setting up progress bar and animated styling
+		Movie movie = (Movie)controller.getProperty("movie");
+		if(movie != null) {
+			double progress = movie.getAverageReviewScore() / 10.0;
+			reviewScore.setProgress(progress);
+			if(!movie.getIsAnimated())
+				isAnimated.setTextFill(Color.GRAY);
+			else {
+				isAnimated.setTextFill(Color.WHITE);
+			}
+		}
+
+		reviewScoreLabel.relocate(500, 130);
+		reviewScore.relocate(500, 150);
+
+		isAnimated.relocate(50, 130);
+
+		leftOne.setDisable(false);
+		leftFive.setDisable(false);
+		leftFirst.setDisable(false);
+		rightOne.setDisable(false);
+		rightFive.setDisable(false);
+		rightLast.setDisable(false);
+
+		if(focus == 0) {
+			leftOne.setDisable(true);
+			leftFive.setDisable(true);
+			leftFirst.setDisable(true);
+		}
+		else if(focus > 0 && focus <= 4) {
+			leftFive.setDisable(true);
+		}
+		else if(focus == movies.size()-1) {
+			rightOne.setDisable(true);
+			rightFive.setDisable(true);
+			rightLast.setDisable(true);
+		}
+		else if(focus > movies.size() - 5 && focus < movies.size() - 1) {
+			rightFive.setDisable(true);
+		}
 	}
 
 	private void	updateAnimation(Movie movie)
@@ -476,7 +545,9 @@ public final class CoverFlow extends AbstractPane
 			// TODO #07a: Update which movie is selected in the model, based on
 			// which button was clicked, following the design specification.
 			if(source == leftOne) {
-				controller.setProperty("movie", movies.get(index - 1));
+				updateItems();
+				updatePane();
+				updateLayout();
 			}
 			else if(source == leftFive) {
 				controller.setProperty("movie", movies.get(index - 5));

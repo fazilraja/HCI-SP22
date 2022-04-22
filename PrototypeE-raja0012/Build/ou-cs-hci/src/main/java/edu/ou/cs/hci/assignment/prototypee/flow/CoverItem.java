@@ -16,6 +16,8 @@ package edu.ou.cs.hci.assignment.prototypee.flow;
 //import java.lang.*;
 import java.util.List;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.effect.*;
@@ -44,6 +46,8 @@ public final class CoverItem extends StackPane
 	public static final String	RSRC		= "edu/ou/cs/hci/resources/";
 	public static final String	FX_ICON	= RSRC + "example/fx/icon/";
 
+	private static final double	W2 = 80;		// Item image width
+	private static final double	H2 = W2 * 1.5;	// Item image height
 	//**********************************************************************
 	// Public Class Methods (Resources)
 	//**********************************************************************
@@ -62,7 +66,7 @@ public final class CoverItem extends StackPane
 	//**********************************************************************
 
 	private static final Font			FONT =
-		Font.font("Serif", FontWeight.BOLD, FontPosture.ITALIC, 18.0);
+		Font.font("Serif", FontWeight.BOLD, 10.0);
 
 	private static final ColorAdjust	COLOR_ADJUST =
 		new ColorAdjust(-0.25, -0.25, -0.25, 0.0);
@@ -70,6 +74,8 @@ public final class CoverItem extends StackPane
 	private static final Glow			GLOW =
 		new Glow(0.5);
 
+	private static final Insets PADDING =
+			new Insets(10.0, 5.0, 10.0, 5.0);
 	//**********************************************************************
 	// Private Members
 	//**********************************************************************
@@ -83,8 +89,22 @@ public final class CoverItem extends StackPane
 	private boolean				selected;	// Selected in the coverflow?
 
 	// TODO #08: Add members for the elements used in your item layout.
-	private Label					label;
-
+	private TextField				label;
+	private ImageView				image;
+	private Circle 					action;
+	private Circle 					comedy;
+	private Circle 					documentary;
+	private Circle 					drama;
+	private Circle					fantasy;
+	private Circle 					horror;
+	private Circle 					romance;
+	private Circle					scifi;
+	private Circle 					thriller;
+	private Circle 					western;
+	private Circle					G;
+	private Polygon					PG;
+	private Rectangle				PG13;
+	private Polygon					R;
 	//**********************************************************************
 	// Constructors and Finalizer
 	//**********************************************************************
@@ -158,16 +178,75 @@ public final class CoverItem extends StackPane
 	{
 		// Create, style, and layout widgets in their initial state.
 		// Focus on the aspects that don't change when the item is selected.
-		label = new Label();
+		label = new TextField();
 		label.setFont(FONT);
-		label.setTextAlignment(TextAlignment.CENTER);
-		label.setRotate(45.0);
+		label.setAlignment(Pos.CENTER);
+		label.setMaxWidth(80);
+		image = new ImageView();
+
+		//genres
+		action = new Circle();
+		action.setFill(Color.valueOf("A6CEE3"));
+
+		comedy = new Circle();
+		comedy.setFill(Color.valueOf("1F78B4"));
+
+		documentary = new Circle();
+		documentary.setFill(Color.valueOf("B2DF8A"));
+
+		drama = new Circle();
+		drama.setFill(Color.valueOf("33A02C"));
+
+		fantasy = new Circle();
+		fantasy.setFill(Color.valueOf("E31A1C"));
+
+		horror = new Circle();
+		horror.setFill(Color.valueOf("FB9A99"));
+
+		romance = new Circle();
+		romance.setFill(Color.valueOf("FDBF6F"));
+
+		scifi = new Circle();
+		scifi.setFill(Color.valueOf("FF7F00"));
+
+		thriller = new Circle();
+		thriller.setFill(Color.valueOf("CAB2D6"));
+
+		western = new Circle();
+		western.setFill(Color.valueOf("6A3D9A"));
+
+		//circle
+		G = new Circle();
+		G.setFill(Color.WHITE);
+		G.setStroke(Color.BLACK);
+
+		//diamond
+		PG = new Polygon();
+		PG.setFill(Color.WHITE);
+		PG.setStroke(Color.BLACK);
+
+		//square
+		PG13 = new Rectangle();
+		PG13.setFill(Color.WHITE);
+		PG13.setStroke(Color.BLACK);
+
+		//triangle
+		R = new Polygon();
+		R.setFill(Color.WHITE);
+		R.setStroke(Color.BLACK);
+
+		//create Hbox of shapes
+		HBox shapes = new HBox(action, comedy, documentary, drama, fantasy, horror, romance, scifi, thriller,
+				western, G, PG, PG13, R);
 
 		// You can use more levels of pane to allow application of extra effects
-		StackPane	pane = new StackPane(label);
+//		StackPane	pane = new StackPane(image, label);
+//		pane.setAlignment(Pos.BOTTOM_CENTER);
+//		pane.setEffect(new DropShadow());
 
+		VBox pane = new VBox(image, label, shapes);
+		pane.setAlignment(Pos.BOTTOM_CENTER);
 		pane.setEffect(new DropShadow());
-
 		getChildren().addAll(pane);
 	}
 
@@ -177,10 +256,50 @@ public final class CoverItem extends StackPane
 		if (movie == null)
 		{
 			label.setText("");
+			image.setImage(null);
 		}
 		else
 		{
 			label.setText(movie.getTitle());
+			image.setImage(movie.getImageAsImage(FX_ICON, W2, H2));
+			String genre = movie.getGenreAsString(gdata);
+				if(genre.contains("Action"))
+					action.setRadius(5);
+				if(genre.contains("Comedy"))
+					comedy.setRadius(5);
+				if(genre.contains("Documentary"))
+					documentary.setRadius(5);
+				if(genre.contains("Drama"))
+					drama.setRadius(5);
+				if(genre.contains("Fantasy"))
+					fantasy.setRadius(5);
+				if(genre.contains("Horror"))
+					horror.setRadius(5);
+				if(genre.contains("Romance"))
+					romance.setRadius(5);
+				if(genre.contains("Sci-Fi"))
+					scifi.setRadius(5);
+				if(genre.contains("Thriller"))
+					thriller.setRadius(5);
+				if(genre.contains("Western"))
+					western.setRadius(5);
+
+				String rating = movie.getRating();
+			switch (rating) {
+				case "G":
+					G.setRadius(7);
+					break;
+				case "PG":
+					PG.getPoints().addAll(5.0, 0.0, 0.0, 5.0, 5.00, 10.0, 10.0, 5.0);
+					break;
+				case "PG-13":
+					PG13.setWidth(10);
+					PG13.setHeight(10);
+					break;
+				case "R":
+					R.getPoints().addAll(10.0, 0.0, 0.0, 10.0, 20.0, 10.0);
+					break;
+			}
 		}
 	}
 
@@ -189,12 +308,12 @@ public final class CoverItem extends StackPane
 	{
 		if (selected)	// Make the item appear brighter
 		{
-			label.setTextFill(Color.YELLOW);
+			label.setStyle("-fx-text-inner-color: blue;");
 			label.setEffect(GLOW);
 		}
 		else			// Make the item appear darker
 		{
-			label.setTextFill(Color.WHITE);
+			label.setStyle("-fx-text-inner-color: black;");
 			label.setEffect(null);
 		}
 	}
@@ -207,10 +326,10 @@ public final class CoverItem extends StackPane
 	private void	registerPropertyListeners()
 	{
 		movie.titleProperty().addListener(this::handleChangeS);
-		//movie.imageProperty().addListener(this::handleChangeS);
+		movie.imageProperty().addListener(this::handleChangeS);
 
 		//movie.yearProperty().addListener(this::handleChangeI);
-		//movie.ratingProperty().addListener(this::handleChangeS);
+		movie.ratingProperty().addListener(this::handleChangeS);
 		//movie.runtimeProperty().addListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().addListener(this::handleChangeB);
@@ -218,12 +337,12 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().addListener(this::handleChangeB);
 		//movie.awardActingProperty().addListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().addListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().addListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().addListener(this::handleChangeI);
-		//movie.genreProperty().addListener(this::handleChangeI);
+		movie.genreProperty().addListener(this::handleChangeI);
 
 		//movie.directorProperty().addListener(this::handleChangeS);
-		//movie.isAnimatedProperty().addListener(this::handleChangeB);
+		movie.isAnimatedProperty().addListener(this::handleChangeB);
 		//movie.isColorProperty().addListener(this::handleChangeB);
 
 		//movie.summaryProperty().addListener(this::handleChangeS);
@@ -234,10 +353,10 @@ public final class CoverItem extends StackPane
 	private void	unregisterPropertyListeners()
 	{
 		movie.titleProperty().removeListener(this::handleChangeS);
-		//movie.imageProperty().removeListener(this::handleChangeS);
+		movie.imageProperty().removeListener(this::handleChangeS);
 
 		//movie.yearProperty().removeListener(this::handleChangeI);
-		//movie.ratingProperty().removeListener(this::handleChangeS);
+		movie.ratingProperty().removeListener(this::handleChangeS);
 		//movie.runtimeProperty().removeListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().removeListener(this::handleChangeB);
@@ -245,12 +364,12 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().removeListener(this::handleChangeB);
 		//movie.awardActingProperty().removeListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().removeListener(this::handleChangeI);
-		//movie.genreProperty().removeListener(this::handleChangeI);
+		movie.genreProperty().removeListener(this::handleChangeI);
 
 		//movie.directorProperty().removeListener(this::handleChangeS);
-		//movie.isAnimatedProperty().removeListener(this::handleChangeB);
+		movie.isAnimatedProperty().removeListener(this::handleChangeB);
 		//movie.isColorProperty().removeListener(this::handleChangeB);
 
 		//movie.summaryProperty().removeListener(this::handleChangeS);

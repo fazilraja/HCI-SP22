@@ -22,9 +22,10 @@
 
 .root
 {
-    -fx-background-color: white;  /* Just an example. Change/replace me! */
+    /* -fx-background-color: white;   My design keeps all the color the same */
     -fx-padding: 35px, 15px, 25px, 15px;
     -fx-wrap-text: true;
+    -fx-alignment: center;
 }
 
 /******************************************************************************/
@@ -36,13 +37,18 @@
     -fx-font: normal bold 16 "sans-serif";        /* Just an example. Change/replace me!  */
     -fx-wrap-text: true;
     -fx-text-alignment: center;
-    -fx-alignment: center;
-    -fx-content-display: center;
+    -fx-alignment: baseline-center;
+    -fx-pref-width: 150;
 }
 
 .image-view
 {
-    -fx-alignment: center;
+    -fx-alignment: baseline-center;
+}
+
+#VBox {
+    -fx-text-alignment: center;
+    -fx-alignment: baseline-center;
 }
 
 /******************************************************************************/

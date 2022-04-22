@@ -1,7 +1,0 @@
-Profile,address-card.png
-Address,address-book.png
-Birthday,birthday-cake.png
-Feeding,align-justify.png
-Walking,baby-carriage.png
-Playtime,bicycle.png
-Naptime,bed.png
